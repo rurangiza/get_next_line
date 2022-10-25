@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:16:30 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/24 17:05:02 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:34:51 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,31 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	s3[i + j] = '\0';
 	return (s3);
+}
+
+/*
+ * Locates first occurence of character {c} in string {s}
+*/
+
+char	*ft_strchr(const char *s, int c)
+{
+	char	ch;
+	int		i;
+
+	ch = c;
+	i = 0;
+	if (ch == '\0')
+	{
+		while (s[i])
+			i++;
+		return ((char *)s + i);
+	}
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == ch)
+			return ((char *)s + i);
+		i++;
+	}
+	return (0);
 }

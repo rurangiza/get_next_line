@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:13:09 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/24 17:08:59 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:41:48 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,25 @@ int	main(void)
 		{
 			// Add buffer content to STASH
 			stash = ft_strjoin(stash, buffer);
-			if ();
+			// Locate '\n' in STASH
+			if (strchr(stash, '\n'))
+			{
+				// Return string till '\n'
+				return ();
+			}
 		}
 		close(fd);
 	}
 }
+
+int	find_null()
+{
+	int i;
+
+	i = 0;
+	while (str[i] !=)
+}
+
 
 // Returns 0 if reached end of line
 
