@@ -1,7 +1,6 @@
-A file descriptor is a number that uniquely identifies an open file in a computer's operating system. It describes a data resource, and how that resource may be accessed.
-
-When a program asks to open a file — or another data resource, like a network socket — the kernel:
+A file descriptor is a number.
 
 Grants access.
 Creates an entry in the global file table.
+
 Provides the software with the location of that entry.

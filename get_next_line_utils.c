@@ -6,7 +6,7 @@
 /*   By: Arsene <Arsene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:16:30 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/26 11:31:29 by Arsene           ###   ########.fr       */
+/*   Updated: 2022/10/26 17:45:56 by Arsene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * Calculates length of a given string
 */
 
-int	ft_strlen(const	char *str)
+size_t	ft_strlen(const	char *str)
 {
 	int	i;
 	
@@ -91,7 +91,7 @@ int	ft_strchr(const char *s, int c)
  * Begins at index {start} and of maximum size {len}
 */
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, size_t start, size_t len)
 {
 	char		*substr;
 	size_t		i;

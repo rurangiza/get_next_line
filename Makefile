@@ -3,15 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
+#    By: Arsene <Arsene@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 11:23:31 by arurangi          #+#    #+#              #
-#    Updated: 2022/10/24 11:30:51 by arurangi         ###   ########.fr        #
+#    Updated: 2022/10/26 17:42:55 by Arsene           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS =			ft_get_next_line.c \
 				ft_get_next_line_utils.c
+
+OBJS =			${SRCS:.c=.o}
 
 CC =			cc ${FLAGS}
 FLAGS =			-Wall -Wextra -Werror
@@ -19,8 +21,10 @@ OPTIONS =		-D BUFFER_SIZE=42
 
 RM =			rm -f
 
-all :			${SRCS}
+clean:
+				${RM} ${OBJS}
 
-clean:			${RM} a.out
+fclean:			clean
+				${RM}
 
 .PHONY:			all clean
