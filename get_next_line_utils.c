@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Arsene <Arsene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:16:30 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/25 14:34:51 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/10/26 10:38:34 by Arsene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
- * 
-*/
-
 #include "get_next_line.h"
+
+/*
+ * Calculates length of a given string
+*/
 
 int	ft_strlen(const	char *str)
 {
@@ -25,6 +25,10 @@ int	ft_strlen(const	char *str)
 		i++;
 	return (i);
 }
+
+/*
+ * Combines two strings to create a new one (with memory allocation)
+*/
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -59,25 +63,82 @@ char	*ft_strjoin(char const *s1, char const *s2)
  * Locates first occurence of character {c} in string {s}
 */
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strchr(const char *s, int c)
 {
 	char	ch;
 	int		i;
 
 	ch = c;
 	i = 0;
-	if (ch == '\0')
-	{
-		while (s[i])
-			i++;
-		return ((char *)s + i);
-	}
+	// if (ch == '\0')
+	// {
+	// 	while (s[i])
+	// 		i++;
+	// 	return ((char *)s + i);
+	// }
 	i = 0;
 	while (s[i])
 	{
 		if (s[i] == ch)
-			return ((char *)s + i);
+			return (i);
 		i++;
 	}
 	return (0);
+}
+
+/*
+ * Returns a substring of {s}
+ * Begins at index {start} and of maximum size {len}
+*/
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char		*substr;
+	size_t		i;
+
+	if (!s)
+		return (NULL);
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	i = 0;
+	while (s[start + i] && i < len)
+		i++;
+	len = i;
+	substr = malloc(sizeof(char) * (len + 1));
+	if (!substr)
+		return (NULL);
+	i = 0;
+	while (i < len && ((char *)s)[start + i])
+	{
+		substr[i] = s[start + i];
+		i++;
+	}
+	substr[i] = '\0';
+	return (substr);
+}
+
+/*
+ * Duplicate a string (Deep copy)
+ *
+ * Returns : the deep copy
+*/
+
+char	*ft_strdup(const char *str)
+{
+	char	*deep_copy;
+	int		s_len;
+	int		s_index;
+
+	s_len = ft_strlen(str);
+	deep_copy = (char *) malloc(sizeof(char) * (s_len + 1));
+	if (!deep_copy)
+		return (NULL);
+	s_index = 0;
+	while (str[s_index])
+	{
+		deep_copy[s_index] = str[s_index];
+		s_index++;
+	}
+	deep_copy[s_index] = '\0';
+	return (deep_copy);
 }
