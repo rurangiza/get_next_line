@@ -6,7 +6,7 @@
 /*   By: Arsene <Arsene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:13:09 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/26 11:09:15 by Arsene           ###   ########.fr       */
+/*   Updated: 2022/10/26 11:46:13 by Arsene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,10 @@ int main(void)
 	{
 		while (read(fd, buffer, sizeof(5)) > 0) // Different '0' and '-1'
 		{
-			printf("+ %s\n", buffer);
 			// Add buffer content to STASH
 			stash = ft_strjoin(stash, buffer);
-			printf("=> %s\n", stash);
 			// Locate '\n' in STASH
 			length = ft_strchr(stash, '\n');
-			printf("Index: %d\n", length);
 			if (length > 0)
 			{
 				// Return string till '\n'
@@ -56,34 +53,16 @@ int main(void)
 				reset();
 				// Erase from stash the content you returned
 				stash = ft_substr(stash, length, 10);
-				printf("%s\n", stash);
 			}
+		}
+		if (stash[0])
+		{
+			//green();
+			printf("\n%s\n", stash);
+			//reset();
 		}
 		close(fd);
 	}
+	else
+		return ; // NULL
 }
-
-int find_length(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-// Returns 0 if reached end of line
-
-// Read nbytes
-// if successful
-// Save in buffer
-// Return nbytes
-// Add buffer content to STASH
-// if there is a '\0'
-// Return saved content till '\0' (get_next_line)
-// Erase content you returned from the STASH
-// if not
-// if end of file or error
-// save the few read characters to buffer
-// return 0
