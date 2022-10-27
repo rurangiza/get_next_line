@@ -6,7 +6,7 @@
 /*   By: Arsene <Arsene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:13:09 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/26 18:15:05 by Arsene           ###   ########.fr       */
+/*   Updated: 2022/10/27 18:24:44 by Arsene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 char *get_next_line(int fd)
 {
@@ -23,37 +24,44 @@ char *get_next_line(int fd)
 	int			length;
 	char 		*line;
 
-	// Check if file descriptor has been provided
-	if (fd != -1)
+	stash = "";
+	if (fd == -1)
+		return (NULL);
+	// Move through text 5 bytes at a time
+	while (read(fd, buffer, sizeof(5)))
 	{
-		stash = "";
-		while (read(fd, buffer, sizeof(5)) > 0) // Different '0' and '-1'
+		printf("+ %s\n", buffer);
+		// Add buffer content to STASH
+		stash = ft_strjoin(stash, buffer);
+		printf("===> %s\n", stash);
+		// Looks for '\n' in STASH
+		length = ft_strchr(stash, '\n');
+		if (length > 0)
 		{
-			// Add buffer content to STASH
-			stash = ft_strjoin(stash, buffer);
-			// Locate '\n' in STASH
-			length = ft_strchr(stash, '\n');
-			if (length > 0)
-			{
-				// Return string till '\n'
-				line = ft_substr(stash, 0, length);
-				// Erase from stash the content you returned
-				stash = ft_substr(stash, length, 10);
-			}
-			/*
-			if (found_end_of_line())
-			{
-				line = 
-			}
-			line = 
-			*/
+			// Save the line
+			line = ft_substr(stash, 0, length);
+			// Erase it from the STASH
+			stash = ft_substr(stash, length, 100);
+			// Return the line
+			return (line);
 		}
-		if (stash[0])
-			return(stash);
-		else
-			return (NULL);
-		//close(fd);
 	}
+	if (stash[0])
+		return(stash);
 	else
 		return (NULL);
+}
+
+int	found_end_of_line(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: Arsene <Arsene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:16:30 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/26 17:45:56 by Arsene           ###   ########.fr       */
+/*   Updated: 2022/10/27 15:15:06 by Arsene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,6 @@ int	ft_strchr(const char *s, int c)
 	int		i;
 
 	ch = c;
-	//i = 0;
-	// if (ch == '\0')
-	// {
-	// 	while (s[i])
-	// 		i++;
-	// 	return ((char *)s + i);
-	// }
 	i = 0;
 	while (s[i])
 	{
