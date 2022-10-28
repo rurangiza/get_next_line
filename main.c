@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Arsene <Arsene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 11:13:42 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/27 15:15:33 by Arsene           ###   ########.fr       */
+/*   Created: 2022/10/26 09:46:50 by Arsene            #+#    #+#             */
+/*   Updated: 2022/10/27 08:27:45 by Arsene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
+#include <stdio.h>
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-
-char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
-// int     found_end_of_line(char *s);
-int     ft_strchr(const char *s, int c);
-char	*ft_substr(char const *s, size_t start, size_t len);
-char	*ft_strdup(const char *str);
-size_t  ft_strlen(const	char *str);
-
-#endif
+int main(void)
+{
+    int     fd;
+    char    *text;
+    
+    fd = open("exemple.txt", O_RDONLY);
+    while (get_next_line(fd))
+    {
+        text = get_next_line(fd);
+        printf("%s", text);
+    }
+    close(fd);
+    return (0);
+}

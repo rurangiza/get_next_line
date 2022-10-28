@@ -43,3 +43,14 @@ size_t  write(int fd, cont void *buf, size_t count);
 C'est une reference qui pointe vers un fichier ouvert sur l'ordinateur
 
 ### What are static variables?
+
+
+### Colors
+```C
+void green () {
+  printf("\033[0;32m");
+}
+void reset () {
+  printf("\033[0m");
+}
+```

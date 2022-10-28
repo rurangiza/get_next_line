@@ -1,3 +1,4 @@
-Nothing new under the sun
-The lion is blue and I like gray
-A gray day is a cloudy one
+A file descriptor is a number.
+Grants access.
+Creates an entry in the global file table.
+Provides the software with the location of that entry.

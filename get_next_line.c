@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:13:09 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/28 16:56:36 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/10/28 17:00:32 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,53 +17,51 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-char	*get_next_line(int fd);
-
-int	main(void)
+char *get_next_line(int fd)
 {
-	int			fd;
 	char		buffer[6];
 	static char	*stash;
+	int			length;
+	char 		*line;
 
 	stash = "";
-	fd = open("exemple.txt", O_RDONLY);
-	if (fd != -1)
+	if (fd == -1)
+		return (NULL);
+	// Move through text 5 bytes at a time
+	while (read(fd, buffer, sizeof(5)))
 	{
-		while (read(fd, buffer, sizeof(5)))
+		printf("+ %s\n", buffer);
+		// Add buffer content to STASH
+		stash = ft_strjoin(stash, buffer);
+		printf("===> %s\n", stash);
+		// Looks for '\n' in STASH
+		length = ft_strchr(stash, '\n');
+		if (length > 0)
 		{
-			// Add buffer content to STASH
-			stash = ft_strjoin(stash, buffer);
-			// Locate '\n' in STASH
-			if (strchr(stash, '\n'))
-			{
-				// Return string till '\n'
-				return ();
-			}
+			// Save the line
+			line = ft_substr(stash, 0, length);
+			// Erase it from the STASH
+			stash = ft_substr(stash, length, 100);
+			// Return the line
+			return (line);
 		}
-		close(fd);
 	}
+	if (stash[0])
+		return(stash);
+	else
+		return (NULL);
 }
 
-int	find_null()
+int	found_end_of_line(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (str[i] !=)
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (-1);
 }
-
-
-// Returns 0 if reached end of line
-
-// Read nbytes
-	// if successful
-			// Save in buffer
-			// Return nbytes
-			// Add buffer content to STASH
-					// if there is a '\0'
-						// Return saved content till '\0' (get_next_line)
-						// Erase content you returned from the STASH
-					// if not
-	// if end of file or error
-			// save the few read characters to buffer
-			// return 0
