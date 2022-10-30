@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:16:30 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/30 16:49:58 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/10/30 18:39:16 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
  * Locates first occurence of character {c} in string {s}
 */
 
-int	found_eol(const char *s, int c)
+int	found_eol(const char *buffer, char ch)
 {
-	char	ch;
 	int		i;
 
-	ch = c;
 	i = 0;
-	while (s[i])
+	while (buffer[i])
 	{
-		if (s[i] == ch && i != 0)
+		if (buffer[i] == ch)
 			return (i);
 		i++;
 	}

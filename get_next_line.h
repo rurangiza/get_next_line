@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:13:42 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/30 16:50:49 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/10/30 18:40:15 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
-int		found_eol(const char *s, int c);
+int		found_eol(const char *buffer, char ch);
 char	*ft_substr(char const *s, size_t start, size_t len);
 char	*ft_strdup(const char *str);
 size_t	ft_strlen(const	char *str);
