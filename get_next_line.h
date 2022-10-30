@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:13:42 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/30 15:22:05 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:42:56 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 // to remove
 #include <stdio.h>
+#define BUFFER_SIZE 26
 
 #define CRED     "\x1b[31m"
 #define CGREEN   "\x1b[32m"

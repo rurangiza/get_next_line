@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:13:09 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/30 16:37:05 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:42:49 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 */
 
 #include "get_next_line.h"
-#define BUFFER_SIZE 5
 
 char	*get_next_line(int fd)
 {
@@ -26,14 +25,13 @@ char	*get_next_line(int fd)
 	int			end_of_line;
 	char 		*line;
 	// Initialisation
-	//bytes_read = read(fd, buffer, BUFFER_SIZE);
 	stash = ft_strdup("");
-	
+	int i = 0;
 	// Avancer dans le fichier text
 	while (read(fd, buffer, BUFFER_SIZE) > 0)
 	{
 		// Afficher le contenu de 'buffer'
-		printf(CBLUE"+ %s"CRESET, buffer);
+		printf(CBLUE"[%d]+ %s"CRESET, i++, buffer);
 		// Ajouter le contenu de 'buffer' dans 'stash'
 		stash = ft_strjoin(stash, buffer);
 		printf(CCYAN" => %s\n"CRESET, stash);
