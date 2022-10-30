@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arsene <Arsene@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 09:46:50 by Arsene            #+#    #+#             */
-/*   Updated: 2022/10/27 08:27:45 by Arsene           ###   ########.fr       */
+/*   Created: 2022/10/30 14:59:57 by arurangi          #+#    #+#             */
+/*   Updated: 2022/10/30 16:30:35 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-int main(void)
+int	main(void)
 {
-    int     fd;
-    char    *text;
-    
-    fd = open("exemple.txt", O_RDONLY);
-    while (get_next_line(fd))
-    {
-        text = get_next_line(fd);
-        printf("%s", text);
-    }
-    close(fd);
-    return (0);
+	int	fd;
+
+	fd = open("exemple.txt", O_RDONLY);
+	printf(CRED "\n------- LINE RETURNED ------\n" CRESET);
+	get_next_line(fd);
 }
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+// 	char *str = "BienvenuLami";
+// 	char *str2 = str + 5;
+// 	printf("%s\n", str2);
+// }

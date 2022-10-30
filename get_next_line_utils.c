@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arsene <Arsene@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:16:30 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/27 15:15:06 by Arsene           ###   ########.fr       */
+/*   Updated: 2022/10/30 15:21:48 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
  * Locates first occurence of character {c} in string {s}
 */
 
-int	ft_strchr(const char *s, int c)
+int	found_EOL(const char *s, int c)
 {
 	char	ch;
 	int		i;

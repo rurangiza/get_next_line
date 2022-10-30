@@ -3,26 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Arsene <Arsene@student.42.fr>              +#+  +:+       +#+         #
+#    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 11:23:31 by arurangi          #+#    #+#              #
-#    Updated: 2022/10/26 17:42:55 by Arsene           ###   ########.fr        #
+#    Updated: 2022/10/30 13:11:37 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =			ft_get_next_line.c \
-				ft_get_next_line_utils.c
+SRC_FILES =			get_next_line.c \
+					get_next_line_utils.c
 
-OBJS =			${SRCS:.c=.o}
-
-CC =			cc ${FLAGS}
 FLAGS =			-Wall -Wextra -Werror
-OPTIONS =		-D BUFFER_SIZE=42
+CC =			gcc ${FLAGS}
 
 RM =			rm -f
 
+NAME=			runthis
+
+all:			${NAME}
+
+${NAME}:
+				${CC} ${SRC_FILES} -o ${NAME}
+
 clean:
-				${RM} ${OBJS}
+				${RM} ${OBJ_FILES}
 
 fclean:			clean
 				${RM}

@@ -1,4 +1,6 @@
-A file descriptor is a number.
-Grants access.
-Creates an entry in the global file table.
-Provides the software with the location of that entry.
+Une orange sur la table  
+Ta robe sur le tapis  
+Et toi dans mon lit  
+Doux présent du présent  
+Fraîcheur de la nuit  
+Chaleur de ma vie.

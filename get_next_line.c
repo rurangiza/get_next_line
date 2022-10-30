@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:13:09 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/28 17:00:32 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:37:05 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,38 @@
 */
 
 #include "get_next_line.h"
-#include <stdio.h>
+#define BUFFER_SIZE 5
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	char		buffer[6];
+	// Variables locales
+	char		buffer[BUFFER_SIZE];
+	int			bytes_read;
 	static char	*stash;
-	int			length;
+	int			end_of_line;
 	char 		*line;
-
-	stash = "";
-	if (fd == -1)
-		return (NULL);
-	// Move through text 5 bytes at a time
-	while (read(fd, buffer, sizeof(5)))
+	// Initialisation
+	//bytes_read = read(fd, buffer, BUFFER_SIZE);
+	stash = ft_strdup("");
+	
+	// Avancer dans le fichier text
+	while (read(fd, buffer, BUFFER_SIZE) > 0)
 	{
-		printf("+ %s\n", buffer);
-		// Add buffer content to STASH
+		// Afficher le contenu de 'buffer'
+		printf(CBLUE"+ %s"CRESET, buffer);
+		// Ajouter le contenu de 'buffer' dans 'stash'
 		stash = ft_strjoin(stash, buffer);
-		printf("===> %s\n", stash);
-		// Looks for '\n' in STASH
-		length = ft_strchr(stash, '\n');
-		if (length > 0)
+		printf(CCYAN" => %s\n"CRESET, stash);
+		// Chercher s'il y a un retour a la ligne
+		end_of_line = found_EOL(stash, '\n');
+		if(end_of_line != 0)
 		{
-			// Save the line
-			line = ft_substr(stash, 0, length);
-			// Erase it from the STASH
-			stash = ft_substr(stash, length, 100);
-			// Return the line
-			return (line);
+			// Copy useful line to LINE
+			line = ft_substr(stash, 0, end_of_line);
+			printf(CGREEN"> %s\n\n"CRESET, line);
+			// Remove useless line from STASH
+			stash = ft_strdup(stash + end_of_line + 1);
 		}
 	}
-	if (stash[0])
-		return(stash);
-	else
-		return (NULL);
-}
-
-int	found_end_of_line(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			return (i);
-		i++;
-	}
-	return (-1);
+	return (stash);
 }
