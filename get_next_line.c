@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:13:09 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/31 12:40:49 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:43:41 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,51 @@
 
 #include "get_next_line.h"
 
+char *read_line(int fd, char *stash);
+
 char	*get_next_line(int fd)
 {
-	char		buffer[BUFFER_SIZE];
 	static char	*stash;
 	char		*line;
 
 	if (!stash)
 		stash = ft_strdup("");
 	if (fd == -1 || BUFFER_SIZE <= 0)
-		return (NULL);
-	while (read(fd, buffer, BUFFER_SIZE) > 0)
 	{
+		return (NULL);
+	}
+	stash = read_line(fd, stash);
+	if (!stash)
+		return (NULL);
+	line = save_line(stash);
+	stash = clean_stash(stash);
+	return (line);
+	// return (NULL);
+}
+
+/* Avancer dans fichier jusqu'a 1)un retour a la ligne ou 2)fin de phrase */
+char *read_line(int fd, char *stash)
+{
+	int bytes_read;
+	char buffer[BUFFER_SIZE];
+
+	bytes_read = 1;
+	while (bytes_read && !found_eol(buffer, '\n'))
+	{
+		// Met a jour la valeur de "bytes_read"
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		printf(CCYAN"%s\n"CRESET, buffer);
+		if (bytes_read == -1)
+		{
+			free(stash);
+			return (NULL);
+		}
 		stash = ft_strjoin(stash, buffer);
 		if (found_eol(buffer, '\n'))
-		{
-			line = save_line(stash);
-			stash = clean_stash(stash);
-			return (line);
-		}
+			break ;
 	}
-	return (NULL);
+	printf(CMAGENTA"%s\n"CRESET, stash);
+	return (stash);
 }
 
 char	*save_line(char *stash)
