@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:16:30 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/30 18:39:16 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/10/31 11:25:43 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	found_eol(const char *buffer, char ch)
 	while (buffer[i])
 	{
 		if (buffer[i] == ch)
-			return (i);
+			return (1);
 		i++;
 	}
 	return (0);

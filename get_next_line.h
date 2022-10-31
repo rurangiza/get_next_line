@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:13:42 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/30 18:40:15 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/10/31 12:36:52 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ int		found_eol(const char *buffer, char ch);
 char	*ft_substr(char const *s, size_t start, size_t len);
 char	*ft_strdup(const char *str);
 size_t	ft_strlen(const	char *str);
+char	*save_line(char *stash);
+char	*clean_stash(char *stash);
 
 #endif
