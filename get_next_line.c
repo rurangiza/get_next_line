@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:13:09 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/31 16:43:41 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/11/01 18:12:18 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,54 +16,55 @@
 
 #include "get_next_line.h"
 
-char *read_line(int fd, char *stash);
-
 char	*get_next_line(int fd)
 {
 	static char	*stash;
 	char		*line;
 
+	if (stash)
+		printf(CRED"static = %s"CRESET, stash);
 	if (!stash)
 		stash = ft_strdup("");
 	if (fd == -1 || BUFFER_SIZE <= 0)
 	{
 		return (NULL);
 	}
-	stash = read_line(fd, stash);
+	stash = get_raw_line(fd, stash);
+	printf(CGREEN"stash = %s"CRESET, stash);
 	if (!stash)
 		return (NULL);
-	line = save_line(stash);
+	line = clean_line(stash);
 	stash = clean_stash(stash);
 	return (line);
-	// return (NULL);
 }
 
 /* Avancer dans fichier jusqu'a 1)un retour a la ligne ou 2)fin de phrase */
-char *read_line(int fd, char *stash)
+char *get_raw_line(int fd, char *stash)
 {
 	int bytes_read;
-	char buffer[BUFFER_SIZE];
+	char buffer[BUFFER_SIZE + 1];
 
 	bytes_read = 1;
-	while (bytes_read && !found_eol(buffer, '\n'))
+	//printf(CBLUE "\nstash000= %s" CRESET, stash);
+	printf("\nvaleur de fct %d\n", found_eol(buffer, '\n'));
+	while (bytes_read > 0 && !found_eol(buffer, '\n'))
 	{
-		// Met a jour la valeur de "bytes_read"
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		printf(CCYAN"%s\n"CRESET, buffer);
+		printf(CBLUE "\nstash000= %s" CRESET, buffer);
 		if (bytes_read == -1)
 		{
 			free(stash);
 			return (NULL);
 		}
+		buffer[bytes_read] = '\0';
 		stash = ft_strjoin(stash, buffer);
-		if (found_eol(buffer, '\n'))
-			break ;
+		//if (found_eol(buffer, '\n'))
+		//	break ;
 	}
-	printf(CMAGENTA"%s\n"CRESET, stash);
 	return (stash);
 }
 
-char	*save_line(char *stash)
+char	*clean_line(char *stash)
 {
 	int		len;
 	int		i;
@@ -71,20 +72,19 @@ char	*save_line(char *stash)
 
 	if (!stash)
 		return (NULL);
-	i = 0;
-	while (stash[i] != '\n' && stash[i])
-		i++;
-	len = i + 2;
-	line = malloc(sizeof(char) * len);
+	len = 0;
+	while (stash[len] != '\n' && stash[len])
+		len++;
+	line = malloc(sizeof(char) * (len + 2));
 	if (!line)
 		return (NULL);
 	i = 0;
-	while (i < len - 1)
+	while (i <= len)
 	{
 		line[i] = stash[i];
 		i++;
 	}
-	line[len] = '\0';
+	line[len + 1] = '\0';
 	return (line);
 }
 
@@ -99,10 +99,11 @@ char	*clean_stash(char *stash)
 	i = 0;
 	while (stash[i] != '\n' && stash[i])
 		i++;
+	if (stash[i] == '\n')
+		i++;
 	new_stash = malloc(sizeof(char) * (ft_strlen(stash) - i + 1));
 	if (!new_stash)
 		return (NULL);
-	i++;
 	j = 0;
 	while (stash[i])
 		new_stash[j++] = stash[i++];

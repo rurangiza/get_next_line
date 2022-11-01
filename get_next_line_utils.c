@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:16:30 by arurangi          #+#    #+#             */
-/*   Updated: 2022/10/31 13:26:06 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/11/01 18:10:54 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,16 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		j;
 
 	if (!s1 || !s2)
+	{
+		free((char *)s1);
 		return (NULL);
+	}
 	length = ft_strlen(s1) + ft_strlen(s2);
+	if (!length)
+	{
+		free((char *)s1);
+		return (NULL);
+	}
 	s3 = malloc(sizeof(char) * (length + 1));
 	if (!s3)
 		return (0);
@@ -64,7 +72,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
  * Locates first occurence of character {c} in string {s}
 */
 
-int	found_eol(const char *buffer, char ch)
+int	found_eol(char *buffer, char ch)
 {
 	int		i;
 
