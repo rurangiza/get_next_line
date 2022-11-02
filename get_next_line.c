@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:13:09 by arurangi          #+#    #+#             */
-/*   Updated: 2022/11/01 18:12:18 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/11/02 17:53:23 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,11 @@ char	*get_next_line(int fd)
 	static char	*stash;
 	char		*line;
 
-	if (stash)
-		printf(CRED"static = %s"CRESET, stash);
 	if (!stash)
 		stash = ft_strdup("");
 	if (fd == -1 || BUFFER_SIZE <= 0)
-	{
 		return (NULL);
-	}
 	stash = get_raw_line(fd, stash);
-	printf(CGREEN"stash = %s"CRESET, stash);
 	if (!stash)
 		return (NULL);
 	line = clean_line(stash);
@@ -38,19 +33,19 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/* Avancer dans fichier jusqu'a 1)un retour a la ligne ou 2)fin de phrase */
 char *get_raw_line(int fd, char *stash)
 {
-	int bytes_read;
-	char buffer[BUFFER_SIZE + 1];
-
+	int		bytes_read;
+	char	buffer[BUFFER_SIZE + 1];
+	int index;
+	
+	index = 0;
+	while (index < BUFFER_SIZE)
+		buffer[index++] = 0;
 	bytes_read = 1;
-	//printf(CBLUE "\nstash000= %s" CRESET, stash);
-	printf("\nvaleur de fct %d\n", found_eol(buffer, '\n'));
-	while (bytes_read > 0 && !found_eol(buffer, '\n'))
+	while (bytes_read > 0 && !found_eol(buffer))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		printf(CBLUE "\nstash000= %s" CRESET, buffer);
 		if (bytes_read == -1)
 		{
 			free(stash);
@@ -58,8 +53,6 @@ char *get_raw_line(int fd, char *stash)
 		}
 		buffer[bytes_read] = '\0';
 		stash = ft_strjoin(stash, buffer);
-		//if (found_eol(buffer, '\n'))
-		//	break ;
 	}
 	return (stash);
 }
@@ -82,6 +75,8 @@ char	*clean_line(char *stash)
 	while (i <= len)
 	{
 		line[i] = stash[i];
+		if (stash[i] == '\n')
+			break ;
 		i++;
 	}
 	line[len + 1] = '\0';

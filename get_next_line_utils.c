@@ -6,15 +6,11 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 11:16:30 by arurangi          #+#    #+#             */
-/*   Updated: 2022/11/01 18:10:54 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/11/02 17:15:46 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-/*
- * Calculates length of a given string
-*/
 
 size_t	ft_strlen(const	char *str)
 {
@@ -26,9 +22,26 @@ size_t	ft_strlen(const	char *str)
 	return (i);
 }
 
-/*
- * Combines two strings to create a new one (with memory allocation)
-*/
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+	int		i;
+	int		nbytes;
+	
+	nbytes = count * size;
+	if (size != 0 && count >= (SIZE_MAX / size))
+		return (NULL);
+	ptr = malloc(nbytes);
+	if (ptr == NULL)
+		return (NULL);
+	if (nbytes)
+	{
+		i = 0;
+		while (i < nbytes)
+			((char *)ptr)[i++] = 0;
+	}
+	return (ptr);
+}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -63,65 +76,24 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s3[i + j] = s2[j];
 		j++;
 	}
-	s3[i + j] = '\0';
+	s3[length] = '\0';
 	free((char *)s1);
 	return (s3);
 }
 
-/*
- * Locates first occurence of character {c} in string {s}
-*/
-
-int	found_eol(char *buffer, char ch)
+int	found_eol(char *buffer)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (buffer[i])
 	{
-		if (buffer[i] == ch)
+		if (buffer[i] == '\n')
 			return (1);
 		i++;
 	}
 	return (0);
 }
-
-/*
- * Returns a substring of {s}
- * Begins at index {start} and of maximum size {len}
-*/
-
-char	*ft_substr(char const *s, size_t start, size_t len)
-{
-	char		*substr;
-	size_t		i;
-
-	if (!s)
-		return (NULL);
-	if (start > ft_strlen(s))
-		return (ft_strdup(""));
-	i = 0;
-	while (s[start + i] && i < len)
-		i++;
-	len = i;
-	substr = malloc(sizeof(char) * (len + 1));
-	if (!substr)
-		return (NULL);
-	i = 0;
-	while (i < len && ((char *)s)[start + i])
-	{
-		substr[i] = s[start + i];
-		i++;
-	}
-	substr[i] = '\0';
-	return (substr);
-}
-
-/*
- * Duplicate a string (Deep copy)
- *
- * Returns : the deep copy
-*/
 
 char	*ft_strdup(const char *str)
 {
