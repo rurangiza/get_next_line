@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Arsene <Arsene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 11:13:42 by arurangi          #+#    #+#             */
-/*   Updated: 2022/11/02 17:15:15 by arurangi         ###   ########.fr       */
+/*   Created: 2022/11/03 15:58:07 by Arsene            #+#    #+#             */
+/*   Updated: 2022/11/04 06:50:00 by Arsene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
 
-char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
-int		found_eol(char *buffer);
-char	*ft_substr(char const *s, size_t start, size_t len);
-char	*ft_strdup(const char *str);
-size_t	ft_strlen(const	char *str);
+// #include <stdio.h>
+// #include "assets.h"
 
-void	*ft_calloc(size_t count, size_t size);
+char    *get_next_line(int fd);
+int     ft_strlen(const	char *str);
+char    *ft_strjoin(char *old_stash, char *buff);
+char    *ft_strdup(const char *str);
+char    *ft_substr(char const *s, int start, size_t len);
+int     ft_strchr_mod(const char *s, char ch);
 
-char	*get_raw_line(int fd, char *stash);
-char	*clean_line(char *stash);
-char	*clean_stash(char *stash);
+char    *ft_get_line(char *raw_line);
+char    *clean_stash(char *stash);
 
 #endif
