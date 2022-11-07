@@ -6,7 +6,7 @@
 /*   By: Arsene <Arsene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:58:09 by Arsene            #+#    #+#             */
-/*   Updated: 2022/11/06 16:39:02 by Arsene           ###   ########.fr       */
+/*   Updated: 2022/11/07 08:11:54 by Arsene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ char    *get_raw_line(int fd, char *stash)
     while (i < BUFFER_SIZE)
         buffer[i++] = 0;
     bytes_read = 1;
-    while (bytes_read > 0)
+    while (bytes_read > 0 && ft_strchr_mod(buffer, '\n') == -1)
     {
         bytes_read = read(fd, buffer, BUFFER_SIZE);
-        if (bytes_read == -1 && ft_strchr_mod(buffer, '\n') == -1)
+        if (bytes_read == -1)
         {
             if (stash)
 				free(stash);
