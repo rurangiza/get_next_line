@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:41:04 by arurangi          #+#    #+#             */
-/*   Updated: 2022/11/07 16:01:15 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/11/13 17:41:21 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <limits.h>
 
 int		ft_strlen(const	char *str);
 char	*ft_strjoin_mod(char *old_stash, char *buff);
