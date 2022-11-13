@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:41:01 by arurangi          #+#    #+#             */
-/*   Updated: 2022/11/07 15:25:08 by arurangi         ###   ########.fr       */
+/*   Updated: 2022/11/13 14:42:56 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ char	*ft_strjoin_mod(char *stash, char *buffer)
 	char	*tmp;
 
 	if (!stash)
+	{
 		stash = ft_strdup("");
+		if (!stash)
+			return (NULL);
+	}
 	if (!buffer)
 		return (NULL);
 	tmp = malloc(sizeof(char) * ((ft_strlen(stash) + ft_strlen(buffer)) + 1));
