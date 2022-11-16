@@ -2,14 +2,14 @@
 ## Creating a function that reads a file one line at a time and saves its position in the file
 In this project, I had to build the get_next_line() function.
 
-# Understanding (phase 1)
+# 🤔 Understanding (phase 1)
 ## The problem: what am I solving?
 
 ## The data: what am I given?
 
 ## The conditions: what constrains or details do I need to be aware of?
 
-# Planning (phase 2)
+# 🗺️ Planning (phase 2)
 
 It reads a text file and returns one line. 
 
