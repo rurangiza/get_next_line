@@ -1,4 +1,4 @@
-#get_next_line
+# get_next_line()
 ## A function that reads a file one line at a time and saves its position in the file
 In this project, I had to build the get_next_line() function.
 
