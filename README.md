@@ -32,7 +32,7 @@ N.B: the file descriptor is an int, so handle all cases in the range of an int..
 ## The conditions: what constrains or details do I need to be aware of?
 ### Common Instructions
 - Your project must be written in C.
-- Your project must be written in accordance with the Norm. If you have bonus
+- Your project must be written in accordance with the [Norm](https://github.com/rurangiza/norm/blob/main/The%20Norm%20v3.pdf). If you have bonus
 files/functions, they are included in the norm check and you will receive a 0 if there
 is a norm error inside.
 - Your functions should not quit unexpectedly (segmentation fault, bus error, double
@@ -88,6 +88,10 @@ end of file.
 - We also consider that get_next_line() has an undefined behavior when reading
 a binary file. However, you can implement a logical way to handle this behavior if
 you want to.
+### Forbiden
+- You are not allowed to use your libft in this project.
+- lseek() is forbidden.
+- Global variables are forbidden.
 
 # 🗺️ Planning (phase 2)
 
