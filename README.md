@@ -169,7 +169,7 @@ fd 4, then 5, then once again 3, once again 4, and so forth.
 - How to remember the position where I was previously?
 
 ### Answers <a name="answers"></a>
-> How to read a file
+> **How to read a file**
 
 To read a file, we use the function read(), which takes 3 arguments:
 
@@ -187,7 +187,7 @@ It returns the number of bytes that were successfully read.
 
 
 
-> How to know I reached the end of the file
+> **How to know I reached the end of the file**
 
 Ex: if you say you want to read 5 bytes at a time, read() will advance in the file 5 bytes at a time, save those in your buffer and return :
 - <code>5</code>, if there was 5 or more bytes remaining in the file
@@ -202,7 +202,7 @@ And make music
 ```
 
 
-> How to remember my position
+> **How to remember my position**
 
 Static variables!
 
