@@ -11,7 +11,6 @@ read from a file descriptor
 | **Parameters** | fd: The file descriptor to read from |
 | **Return value** | a line: correct behavior,  NULL: there is nothing else to read, or an error occurred |
 | **External functions** | read, malloc, free |
-| | |
 
 ## Table of content
 1. [Understanding](#phase1)
