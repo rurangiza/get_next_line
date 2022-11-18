@@ -185,8 +185,6 @@ and saves that number of bytes in the given buffer.
 
 It returns the number of bytes that were successfully read.
 
-
-
 > **How to know I reached the end of the file**
 
 Ex: if you say you want to read 5 bytes at a time, read() will advance in the file 5 bytes at a time, save those in your buffer and return :
@@ -200,8 +198,6 @@ Hello, my name is arsene
 I like programming
 And make music
 ```
-
-
 > **How to remember my position**
 
 Static variables!
