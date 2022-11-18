@@ -30,25 +30,20 @@ I want a function that reads a file and returns one line everytime I call it but
 
 Let's say we have this text file:
 ```
-Some say the world will end in fire,
-Some say in ice.
-From what I’ve tasted of desire
-I hold with those who favor fire.
-But if it had to perish twice,
-I think I know enough of hate
-To say that for destruction ice
-Is also great
-And would suffice.
+Hello buddy!
+How are you?
+It's been a long time
 ```
 If we called and printed the result of the <code>get_next_line()</code> 
-function once, we would see (without the quotes):
+function once, we would see:
 
-	Some say the world will end in fire,
+	Hello buddy!
 
 Calling it a second time would return:
 
-	Some say in ice.
-And so on.
+	How are you?
+
+And so on. So the function remembers that "Hello buddy!" was already returned, so it starts reading the next line, hence the name "get_next_line".
 
 ## The data <a name="data"></a>
 > **What am I given?**
