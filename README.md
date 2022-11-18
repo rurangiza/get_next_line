@@ -133,7 +133,7 @@ The buffer size value will be modified by your peer-evaluators and the Moulinett
 in order to test your code.
 - You will compile your code as follows (a buffer size of 42 is used as an example):
 cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 <files>.c
-- We consider that get_next_line() has an undefined behavior if the file pointed to
+- We consider that `get_next_line()` has an undefined behavior if the file pointed to
 by the file descriptor changed since the last call whereas read() didn’t reach the
 end of file.
 - We also consider that get_next_line() has an undefined behavior when reading
@@ -165,10 +165,12 @@ fd 4, then 5, then once again 3, once again 4, and so forth.
 
 ### Questions <a name="questions"></a>
 - How to read a file?
-- How to know I reached end of file?
+- How to know I reached the end of the file?
 - How to remember the position where I was previously?
 
 ### Answers <a name="answers"></a>
+> How to read a file
+
 To read a file, we use the function read(), which takes 3 arguments:
 
 ```C
@@ -183,6 +185,8 @@ and saves that number of bytes in the given buffer.
 
 It returns the number of bytes that were successfully read.
 
+> How to know I reached the end of the file
+
 Ex: if you say you want to read 5 bytes at a time, read() will advance in the file 5 bytes at a time, save those in your buffer and return :
 - <code>5</code>, if there was 5 or more bytes remaining in the file
 - <code>less than 5</code>, if the end of the file is less than 5 bytes away
@@ -194,3 +198,15 @@ Hello, my name is arsene
 I like programming
 And make music
 ```
+
+> How to remember my position
+
+static variables!
+
+Static variables are special kind of variables that preserve their value even after they are out of their scope.
+
+Static variables have a property of preserving their value even after they are out of their scope!
+<details><summary>1. A static int variable remains in memory while the program is running. A normal or auto variable is destroyed when a function call where the variable was declared is over</summary></details>
+<details><summary>2. Static variables are allocated memory in data segment, not stack segment. See [memory layout](https://www.geeksforgeeks.org/memory-layout-of-c-program/) of C programs for details.</summary></details>
+<details><summary>3. Static variables (like global variables) are initialized as 0 if not initialized explicitly</summary></details>
+<details><summary>4. In C, static variables can only be initialized using constant literals.</summary></details>
