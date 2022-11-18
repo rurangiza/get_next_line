@@ -13,9 +13,7 @@
 ## The problem <a name="problem"></a>
 > **What am I solving?**
 
-I want to read a file one line of text at a time and remember my position in 
-the file while it is still opened. So when I read that file again, 
-it will return me the next line of that file and not one I've already read.
+I want a function that reads a file and returns one line everytime I call it but never returns a line that was returned before.
 
 Let's say we have this text file:
 ```
