@@ -185,6 +185,8 @@ and saves that number of bytes in the given buffer.
 
 It returns the number of bytes that were successfully read.
 
+
+
 > How to know I reached the end of the file
 
 Ex: if you say you want to read 5 bytes at a time, read() will advance in the file 5 bytes at a time, save those in your buffer and return :
@@ -199,14 +201,43 @@ I like programming
 And make music
 ```
 
+
 > How to remember my position
 
-static variables!
+Static variables!
 
-Static variables are special kind of variables that preserve their value even after they are out of their scope.
+Static variables are special kind of variables that preserve their value even after they are out of their scope (outside of the function they were declared in).
 
-Static variables have a property of preserving their value even after they are out of their scope!
-<details><summary>1. A static int variable remains in memory while the program is running. A normal or auto variable is destroyed when a function call where the variable was declared is over</summary></details>
-<details><summary>2. Static variables are allocated memory in data segment, not stack segment. See [memory layout](https://www.geeksforgeeks.org/memory-layout-of-c-program/) of C programs for details.</summary></details>
-<details><summary>3. Static variables (like global variables) are initialized as 0 if not initialized explicitly</summary></details>
-<details><summary>4. In C, static variables can only be initialized using constant literals.</summary></details>
+Exemple:
+```C
+#include<stdio.h>
+
+int fun()
+{
+	// First time this function is called, count will be initialized to 0
+	// After that, count will skip the initialization part and remember its previous state
+	static int count = 0;
+	count++;
+	return count;
+}
+
+int main()
+{
+	printf("%d ", fun());
+	printf("%d ", fun());
+	return 0;
+}
+
+```
+Output:
+```
+1 2
+```
+
+Facts about static variables in C:
+1. A static int variable remains in memory while the program is running. A normal or auto variable is destroyed when a function call where the variable was declared is over
+2. Static variables are allocated memory in data segment, not stack segment. See memory layout of C programs for details.
+3. Static variables (like global variables) are initialized as 0 if not initialized explicitly
+4. In C, static variables can only be initialized using constant literals.
+5. Static global variables and functions are also possible in C/C++. The purpose of these is to limit scope of a variable or function to a file. Please refer Static functions in C for more details.
+6. Static variables should not be declared inside structure. The reason is C compiler requires the entire structure elements to be placed together (i.e.) memory allocation for structure members should be contiguous. It is possible to declare structure inside the function (stack segment) or allocate memory dynamically(heap segment) or it can be even global (BSS or data segment). Whatever might be the case, all structure members should reside in the same memory segment because the value for the structure element is fetched by counting the offset of the element from the beginning address of the structure. Separating out one member alone to data segment defeats the purpose of static variable and it is possible to have an entire structure as static.
