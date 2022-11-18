@@ -1,5 +1,7 @@
 # get_next_line()
-## Creating a function that reads a file one line at a time and saves its position in the file
+### Reading a line from a fd is way too tedious
+This project is about programming a function that returns a line
+read from a file descriptor
 1. [Understanding](#phase1)
 	1. [The problem](#problem)
 	2. [The data](#data)
@@ -195,11 +197,11 @@ Hello, my name is arsene
 I like programming
 And make music
 ```
-> **How to remember my position**
+> **How to remember my position in a file**
 
 Static variables!
 
-Static variables are special kind of variables that preserve their value even after they are out of their scope (outside of the function they were declared in).
+Static variables are special kind of variables that preserve their value even after they are out of their scope (ex: outside of the function they were declared in).
 
 Exemple:
 ```C
