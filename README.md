@@ -4,8 +4,27 @@ In this project, I had to build the get_next_line() function.
 
 # 🤔 Understanding (phase 1)
 ## The problem: what am I solving?
+I want to read a file one line of text at a time and remember my position in the file while it is still opened.
 
 ## The data: what am I given?
+A File Descriptor, which is an integer that uniquely identifies an open file of the process.
+To access and manipulate the content of any file in C, we need its file descriptor. 
+
+We get the file descriptor of a file by calling the open() function which is in the <code>fcntl.h</code> library.
+
+open() takes two arguments, open(<filename>, <mode>)
+1. the first is the absolute path of the file you want to open. If that file is in your current directory, you can simply write its need
+2. the mode in which to open the file
+	- O_RDONLY: read only
+	- O_WRONLY: write only
+	- O_RDWR: read and write
+	- O_CREAT: create file if it doesn’t exist
+
+When given these informations, open() will return a file descriptor
+- **-1 i**f something wrong happened
+- a **positive number** if successful
+
+N.B: the file descriptor is an int, so handle all cases in the range of an int..
 
 ## The conditions: what constrains or details do I need to be aware of?
 
