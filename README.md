@@ -154,7 +154,7 @@ fd 4, then 5, then once again 3, once again 4, and so forth.
 - lseek() is forbidden.
 - Global variables are forbidden.
 
-# 🗺️ Planning (phase 2) <a name="planning"></a>
+# 🗺️ Planning (phase 2) <a name="phase2"></a>
 
 ### Steps
 1. Read file until I reach the new line character ('\n') or end of file
