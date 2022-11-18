@@ -1,8 +1,5 @@
 # get_next_line()
 ## Creating a function that reads a file one line at a time and saves its position in the file
-In this project, I had to build the get_next_line() function.
-
-# Table of contents
 1. [Understanding](#phase1)
 	1. [The problem](#problem)
 	2. [The data](#data)
@@ -14,7 +11,7 @@ In this project, I had to build the get_next_line() function.
 
 # 🤔 Understanding (phase 1) <a name="phase1"></a>
 ## The problem <a name="problem"></a>
-| what am I solving?
+> **What am I solving?**
 
 I want to read a file one line of text at a time and remember my position in 
 the file while it is still opened. So when I read that file again, 
@@ -43,7 +40,8 @@ Calling it a second time would return:
 And so on.
 
 ## The data <a name="data"></a>
-| what am I given?
+> **What am I given?**
+
 A File Descriptor, which is an integer that uniquely identifies an open file.
 To access and manipulate the content of any file in C, we need its file descriptor. 
 
@@ -80,7 +78,8 @@ fd = open("file.txt", O_RDONLY);
 N.B: the file descriptor is an int, so the function should handle all values an int can have (valid or not)..
 
 ## The conditions <a name="conditions"></a>
-| what constrains or details do I need to be aware of?
+> **What constrains or details do I need to be aware of?**
+
 ### Common Instructions
 - Your project must be written in C.
 - Your project must be written in accordance with the [Norm](https://github.com/rurangiza/norm/blob/main/The%20Norm%20v3.pdf). If you have bonus
