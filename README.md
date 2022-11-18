@@ -2,8 +2,18 @@
 ## Creating a function that reads a file one line at a time and saves its position in the file
 In this project, I had to build the get_next_line() function.
 
-# 🤔 Understanding (phase 1)
-## The problem
+# Table of contents
+1. [Understanding](#phase1)
+	1. [The problem](#problem)
+	2. [The data](#data)
+	3. [The conditions](#conditions)
+2. [Planning](#phase2)
+3. [Research](#phase3)
+	1. [Questions](#questions)
+	2. [Answers](#answers)
+
+# 🤔 Understanding (phase 1) <a name="phase1"></a>
+## The problem <a name="problem"></a>
 | what am I solving?
 
 I want to read a file one line of text at a time and remember my position in 
@@ -32,7 +42,7 @@ Calling it a second time would return:
 	Some say in ice.
 And so on.
 
-## The data
+## The data <a name="data"></a>
 | what am I given?
 A File Descriptor, which is an integer that uniquely identifies an open file.
 To access and manipulate the content of any file in C, we need its file descriptor. 
@@ -69,7 +79,7 @@ fd = open("file.txt", O_RDONLY);
 
 N.B: the file descriptor is an int, so the function should handle all values an int can have (valid or not)..
 
-## The conditions
+## The conditions <a name="conditions"></a>
 | what constrains or details do I need to be aware of?
 ### Common Instructions
 - Your project must be written in C.
@@ -144,21 +154,21 @@ fd 4, then 5, then once again 3, once again 4, and so forth.
 - lseek() is forbidden.
 - Global variables are forbidden.
 
-# 🗺️ Planning (phase 2)
+# 🗺️ Planning (phase 2) <a name="planning"></a>
 
 ### Steps
 1. Read file until I reach the new line character ('\n') or end of file
 - If '\n' is found, return a string from first character read till '\n'
 - else, return everything that was read until now (end of file)
 
-# 🔎 Research (phase 3)
+# 🔎 Research (phase 3) <a name="phase3"></a>
 
-### Questions
+### Questions <a name="questions"></a>
 - How to read a file?
 - How to know I reached end of file?
 - How to remember the position where I was previously?
 
-### Answers
+### Answers <a name="answers"></a>
 To read a file, we use the function read(), which takes 3 arguments:
 
 ```C
