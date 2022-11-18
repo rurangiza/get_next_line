@@ -2,6 +2,18 @@
 ### Reading a line from a fd is way too tedious
 This project is about programming a function that returns a line
 read from a file descriptor
+
+| **Description**  | Write a function that returns a line read from a file descriptor |
+|---|---|
+| **Function name**   | get_next_line()  |
+| **Prototype**  | char *get_next_line(int fd);  |
+| **Files to turn in**  |  get_next_line.c, get_next_line_utils.c, get_next_line.h |
+| **Parameters** | fd: The file descriptor to read from |
+| **Return value** | a line: correct behavior,  NULL: there is nothing else to read, or an error occurred |
+| **External functions** | read, malloc, free |
+|
+
+
 1. [Understanding](#phase1)
 	1. [The problem](#problem)
 	2. [The data](#data)
