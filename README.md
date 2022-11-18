@@ -34,13 +34,17 @@ And so on.
 
 ## The data
 | what am I given?
-A File Descriptor, which is an integer that uniquely identifies an open file of the process.
+A File Descriptor, which is an integer that uniquely identifies an open file.
 To access and manipulate the content of any file in C, we need its file descriptor. 
 
-We get the file descriptor of a file by calling the open() function which is 
-in the <code>fcntl.h</code> library.
+We get the file descriptor of a file by calling the open() function.
 
-open() takes two arguments, open(<filename\>, <mode\>)
+open() takes two arguments
+
+```C
+int	open(<path-to-file>, <mode>)
+```
+
 1. the first is the absolute path of the file you want to open. If that file is 
 in your current directory, you can simply write its name
 2. the mode in which to open the file
@@ -143,11 +147,40 @@ fd 4, then 5, then once again 3, once again 4, and so forth.
 # 🗺️ Planning (phase 2)
 
 ### Steps
-1. Read file until reach the new line character ('\n') or end of file
-- If '\n' is found, return a string from first character to '\n'
-- else, return everything that was read until end of file
+1. Read file until I reach the new line character ('\n') or end of file
+- If '\n' is found, return a string from first character read till '\n'
+- else, return everything that was read until now (end of file)
+
+# 🔎 Research (phase 3)
 
 ### Questions
 - How to read a file?
 - How to know I reached end of file?
 - How to remember the position where I was previously?
+
+### Answers
+To read a file, we use the function read(), which takes 3 arguments:
+
+```C
+int	read(<file descriptor>, <buffer>, <size>)
+```
+1. a file descriptor: to access a file
+2. a buffer: which is a variable that stores what was read
+3. a size: the number of bytes to read at a time
+
+read() goes through a file a certain number of bytes at a time
+and saves that number of bytes in the given buffer.
+
+It returns the number of bytes that were successfully read.
+
+Ex: if you say you want to read 5 bytes at a time, read() will advance in the file 5 bytes at a time, save those in your buffer and return :
+- <code>5</code>, if there was 5 or more bytes remaining in the file
+- <code>less than 5</code>, if the end of the file is less than 5 bytes away
+- <code>0</code>, if we reached the end
+- <code>-1</code>, if an error occured
+
+```
+Hello, my name is arsene
+I like programming
+And make music
+```
